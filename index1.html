@@ -1,0 +1,239 @@
+import React, { useState } from 'react';
+import { BookOpen, User, PenTool, Star, Link, List, GraduationCap, Award, Info, Feather, Bookmark, Scroll } from 'lucide-react';
+
+const App = () => {
+  return (
+    <div className="min-h-screen bg-[#fdfbf7] text-slate-800 font-sans selection:bg-amber-200 selection:text-amber-900 pb-12 border-t-8 border-slate-800">
+      
+      {/* Header / Hero Section - Classic Book Style */}
+      <header className="bg-slate-900 text-amber-50 pt-16 pb-20 px-6 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#eab308 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-900/20 px-4 py-1.5 rounded-full text-amber-200 text-sm font-medium mb-6 tracking-wide uppercase">
+            <Feather size={14} />
+            <span>Materi Bahasa Indonesia</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-[#fdfbf7]">
+            Teks Biografi
+          </h1>
+          <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-serif italic leading-relaxed">
+            "Gajah mati meninggalkan gading, manusia mati meninggalkan nama."
+          </p>
+        </div>
+        
+        {/* Decorative bottom curve */}
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-[#fdfbf7] rounded-t-[50%] scale-x-150 translate-y-6"></div>
+      </header>
+
+      {/* Main Content Grid */}
+      <main className="max-w-6xl mx-auto px-6 -mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-20">
+
+        {/* 1. Pengertian */}
+        <Card 
+          title="Pengertian" 
+          icon={<BookOpen className="text-amber-100" size={24} />}
+          headerColor="bg-slate-800"
+          accentColor="border-slate-800"
+        >
+          <div className="space-y-4 font-serif">
+            <p className="text-slate-700 leading-relaxed text-lg">
+              Teks yang berisi kisah atau riwayat hidup seseorang yang ditulis oleh <strong>orang lain</strong>. Memuat perjalanan hidup, prestasi, dan keteladanan.
+            </p>
+            <div className="bg-[#f4f1ea] p-4 border-l-4 border-slate-600 text-sm text-slate-800 italic">
+              <span className="font-bold not-italic">📌 Catatan:</span> Jika ditulis sendiri oleh tokohnya disebut <span className="font-bold underline decoration-amber-500 decoration-2">Autobiografi</span>.
+            </div>
+          </div>
+        </Card>
+
+        {/* 2. Tujuan */}
+        <Card 
+          title="Tujuan" 
+          icon={<Star className="text-amber-100" size={24} />}
+          headerColor="bg-amber-700"
+          accentColor="border-amber-700"
+        >
+          <ul className="space-y-3">
+            {[
+              { text: "Informasi fakta kehidupan", icon: <Info size={16} /> },
+              { text: "Menginspirasi pembaca", icon: <Award size={16} /> },
+              { text: "Meneladani sikap tokoh", icon: <User size={16} /> },
+              { text: "Dokumentasi sejarah", icon: <Scroll size={16} /> }
+            ].map((item, idx) => (
+              <li key={idx} className="flex items-center gap-3 text-slate-700 border-b border-dashed border-slate-300 pb-2 last:border-0 last:pb-0">
+                <span className="text-amber-700 bg-amber-100 p-1.5 rounded-full">{item.icon}</span>
+                <span className="font-medium font-serif">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        {/* 3. Struktur (Timeline Style) */}
+        <div className="md:col-span-2 lg:col-span-1 row-span-2">
+          <div className="bg-white rounded-xl shadow-md border border-slate-200 h-full overflow-hidden flex flex-col">
+            <div className="bg-emerald-900 p-5 flex items-center gap-3 border-b-4 border-emerald-700">
+              <List className="text-emerald-100" size={24} />
+              <h2 className="text-xl font-serif font-bold text-white tracking-wide">Struktur Teks</h2>
+            </div>
+            
+            <div className="p-6 flex-1 relative bg-[#f9fafb]">
+              {/* Timeline Line */}
+              <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-slate-300 border-l border-dashed border-slate-400"></div>
+              
+              <div className="space-y-10 relative">
+                {/* Orientasi */}
+                <div className="relative pl-10">
+                  <div className="absolute left-6 top-1 w-4 h-4 bg-emerald-700 rounded-full border-4 border-white shadow-sm"></div>
+                  <h3 className="font-serif font-bold text-slate-800 text-lg">1. Orientasi</h3>
+                  <p className="text-xs font-bold text-emerald-700 tracking-wider uppercase mb-2">Pengenalan</p>
+                  <ul className="text-sm text-slate-600 space-y-1 font-serif italic">
+                    <li>• Siapa tokohnya?</li>
+                    <li>• Latar belakang keluarga</li>
+                    <li>• Tempat & tanggal lahir</li>
+                  </ul>
+                </div>
+
+                {/* Peristiwa */}
+                <div className="relative pl-10">
+                  <div className="absolute left-6 top-1 w-4 h-4 bg-emerald-700 rounded-full border-4 border-white shadow-sm"></div>
+                  <h3 className="font-serif font-bold text-slate-800 text-lg">2. Peristiwa Penting</h3>
+                  <p className="text-xs font-bold text-emerald-700 tracking-wider uppercase mb-2">Inti Cerita</p>
+                  <div className="grid grid-cols-2 gap-2 mt-2 font-serif text-sm">
+                    <div className="bg-white border border-slate-200 p-2 text-center rounded text-slate-700 shadow-sm">Pendidikan</div>
+                    <div className="bg-white border border-slate-200 p-2 text-center rounded text-slate-700 shadow-sm">Karier</div>
+                    <div className="bg-white border border-slate-200 p-2 text-center rounded text-slate-700 shadow-sm">Prestasi</div>
+                    <div className="bg-white border border-slate-200 p-2 text-center rounded text-slate-700 shadow-sm">Tantangan</div>
+                  </div>
+                </div>
+
+                {/* Reorientasi */}
+                <div className="relative pl-10">
+                  <div className="absolute left-6 top-1 w-4 h-4 bg-emerald-700 rounded-full border-4 border-white shadow-sm"></div>
+                  <h3 className="font-serif font-bold text-slate-800 text-lg">3. Reorientasi</h3>
+                  <p className="text-xs font-bold text-emerald-700 tracking-wider uppercase mb-2">Penutup (Opsional)</p>
+                  <p className="text-sm text-slate-600 font-serif italic">
+                    Pandangan penulis terhadap tokoh & kesimpulan nilai moral.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Ciri-Ciri */}
+        <Card 
+          title="Ciri-Ciri Utama" 
+          icon={<User className="text-amber-100" size={24} />}
+          headerColor="bg-red-900"
+          accentColor="border-red-900"
+        >
+          <div className="space-y-2">
+            {[
+              "Tokoh Nyata & Faktual",
+              "Alur Kronologis (Urut Waktu)",
+              "Inspiratif & Keteladanan",
+              "Pola Narasi (Penceritaan)"
+            ].map((ciri, idx) => (
+              <div key={idx} className="flex items-center gap-3 p-3 bg-red-50 border border-red-100 rounded text-red-900">
+                <div className="font-serif font-bold text-lg opacity-40">{idx + 1}.</div>
+                <span className="text-sm font-medium">{ciri}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        {/* 5. Kaidah Kebahasaan */}
+        <Card 
+          title="Kaidah Bahasa" 
+          icon={<PenTool className="text-amber-100" size={24} />}
+          headerColor="bg-indigo-900"
+          accentColor="border-indigo-900"
+        >
+          <div className="space-y-5">
+            <LanguageRule 
+              title="Kata Kerja Tindakan" 
+              desc="Aktivitas fisik nyata."
+              example="belajar, berjuang, menulis"
+            />
+            <LanguageRule 
+              title="Kata Sifat (Adjektiva)" 
+              desc="Karakter personal."
+              example="ulet, jenius, ramah"
+            />
+            <LanguageRule 
+              title="Konjungsi Waktu" 
+              desc="Penghubung urutan."
+              example="kemudian, lalu, setelah itu"
+            />
+            <LanguageRule 
+              title="Pronomina Orang Ke-3" 
+              desc="Kata ganti penunjuk."
+              example="ia, dia, beliau"
+            />
+          </div>
+        </Card>
+
+        {/* 6. Jenis-Jenis */}
+        <div className="md:col-span-2 lg:col-span-3 mt-4">
+           <div className="bg-[#2c3e50] rounded-xl p-8 shadow-xl text-amber-50 relative overflow-hidden border-t-4 border-amber-600">
+             <div className="absolute top-0 right-0 p-8 opacity-10">
+               <GraduationCap size={120} />
+             </div>
+             
+             <div className="flex items-center gap-4 mb-8 relative z-10">
+                <Bookmark className="text-amber-400" />
+                <h2 className="text-2xl font-serif font-bold">Jenis-Jenis Biografi</h2>
+             </div>
+             
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <TypeCard title="Biografi Singkat" desc="Fokus hanya pada momen paling krusial dalam hidup." />
+                <TypeCard title="Biografi Lengkap" desc="Narasi mendetail dari lahir hingga wafat/kini." />
+                <TypeCard title="Autobiografi" desc="Ditulis sendiri oleh tokoh itu sendiri." highlight={true} />
+                <TypeCard title="Biografi Karier" desc="Menyoroti perjalanan profesional semata." />
+             </div>
+           </div>
+        </div>
+
+      </main>
+
+      <footer className="mt-16 text-center text-slate-500 text-sm font-serif">
+        <p>&copy; Pustaka Belajar Bahasa Indonesia</p>
+      </footer>
+    </div>
+  );
+};
+
+// --- Sub Components ---
+
+const Card = ({ title, icon, headerColor, accentColor, children }) => {
+  return (
+    <div className={`bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full`}>
+      <div className={`${headerColor} p-4 flex items-center gap-3 border-b-4 ${accentColor}`}>
+        {icon}
+        <h2 className="text-xl font-serif font-bold text-white tracking-wide">{title}</h2>
+      </div>
+      <div className="p-6 flex-1 bg-white">
+        {children}
+      </div>
+    </div>
+  );
+};
+
+const LanguageRule = ({ title, desc, example }) => (
+  <div className="relative pl-4 border-l-2 border-slate-200 hover:border-indigo-800 transition-colors">
+    <h4 className="font-bold text-indigo-900 text-sm font-serif">{title}</h4>
+    <p className="text-xs text-slate-600 mt-0.5">{desc}</p>
+    <p className="text-xs text-slate-500 italic mt-1 font-serif bg-slate-50 inline-block px-2 py-0.5 rounded">"{example}"</p>
+  </div>
+);
+
+const TypeCard = ({ title, desc, highlight = false }) => (
+  <div className={`p-5 rounded border ${highlight ? 'bg-amber-900/40 border-amber-500/50' : 'bg-white/5 border-white/10'} hover:bg-white/10 transition-colors`}>
+    <h3 className={`font-bold font-serif text-lg mb-2 ${highlight ? 'text-amber-300' : 'text-slate-200'}`}>{title}</h3>
+    <p className="text-sm text-slate-400 leading-relaxed font-light">{desc}</p>
+  </div>
+);
+
+export default App;
